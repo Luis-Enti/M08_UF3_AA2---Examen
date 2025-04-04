@@ -142,7 +142,39 @@ public class ObjectPicker : MonoBehaviour
     }
     void HandlePickingUI()
     {
+        Vector3 screenCenter = new Vector3(Screen.width / 2, Screen.height / 2, 0);
 
+        pickingIconCurrentPos = screenCenter;
+
+        pickingIconCurrentPos = screenCenter;
+
+        pickingIcon.transform.position = pickingIconCurrentPos;
+
+        if (pickableObject != null)
+        {
+            Vector3 pickableObjectViewPos = cam.WorldToViewportPoint(pickableObject.transform.position);
+
+            Vector3 pickableObjectScreenPos = cam.WorldToScreenPoint(pickableObject.transform.position);
+
+            if (pickableObjectViewPos.z > 0)
+            {
+                pickingIcon.transform.position = pickableObjectScreenPos;
+                pickingIcon.alpha = pickingIconAvailable;
+            }
+            else
+            {
+                pickingIcon.alpha = 0.25f;
+            }
+
+            if (state == PICKSTATE.BLOCKED)
+            {
+                pickingIcon.alpha = pickingIconBlocked;
+            }
+            else
+            {
+                pickingIcon.alpha = 0f;
+            }
+        }
     }
 
     void StartPickup()

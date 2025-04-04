@@ -61,6 +61,7 @@ public class ObjectThrower : MonoBehaviour
                 if(i != selected)
                 {
                     objects[i].selector.alpha = 0;
+                    
                 }
                 else
                 {
@@ -68,5 +69,14 @@ public class ObjectThrower : MonoBehaviour
                 }
             }
         }
+        UpdateForceIndicator();
+
+    }
+
+    void UpdateForceIndicator()
+    {
+        float forcePercentage = Mathf.InverseLerp(forceMin, forceMax, force);
+
+        forceIndicator.fillAmount = forcePercentage;
     }
 }

@@ -8,7 +8,7 @@ public class InventoryManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetButtonDown("Inventory"))
+        if (Input.GetButtonDown("Inventory") || Input.GetKeyDown("i"))
         {
 
         }
